@@ -1,0 +1,34 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+    <a href="/" class="navbar-brand">
+        <img src="/img/guia.png" alt="">
+    </a>
+    <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div id="my-nav" class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/"><i class="fas fa-home"></i> Home<span class="sr-only">(current)</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/articles"><i class="fas fa-newspaper"></i> Artigos</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/categories"><i class="fas fa-cube"></i> Categorias</a>
+            </li>
+            
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-align-justify"></i> Por categorias
+                </a>                
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <% categories.forEach(category => { %>
+                        <a class="dropdown-item" href="/category/<%= category.slug %>"><%= category.title %></a>
+                    <% }) %>
+                </div>                
+            </li>            
+        </ul>
+    </div>
+</nav>

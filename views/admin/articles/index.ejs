@@ -1,0 +1,53 @@
+<%- include ('../../partials/header.ejs') %> 
+
+<%- include ('../../partials/navbar.ejs') %> 
+
+<div class="container container-top">
+
+    <h5>Listagem de artigos</h5>
+    <a href="/admin/articles/new" class="btn btn-primary btn-sm">Incluir novo artigo</a>
+    <hr>
+
+    <table class="table table-light table-bordered">
+        <thead class="thead-light">
+            <tr class="text-center">
+                <th>#ID</th>
+                <th>Título</th>
+                <th>Slug</th>
+                <th>Categoria</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% articles.forEach(article => { %>
+            <tr>
+                <td class="text-center"><%= article.id %> </td>
+                <td><%= article.title %> </td>
+                <td><%= article.slug %> </td>
+                <td><%= article.category.title %> </td>
+                <td class="text-center">
+                    <a href="/admin/articles/view/<%= article.id %>" title="Detalhes"><i class="fas fa-eye"></i></a> |
+                    <a href="/admin/articles/edit/<%= article.id %>" title="Editar"><i class="fas fa-edit"></i></a>  |
+                    <a href="/admin/articles/delete/<%= article.id %>" title="Excluir" class="delete_article"><i class="fas fa-eraser"></i></a>
+                </td>
+            </tr>
+            <% }) %> 
+        </tbody>        
+    </table>
+
+</div>
+
+<%- include ('../../partials/footer.ejs') %> 
+
+<script>
+    $('.delete_article').click(function(e){
+        e.preventDefault();
+        var decision = confirm('Você realmente quer excluir este artigo?');
+        if (decision) {
+            location.href = $(this).attr('href');
+            //window.location.href = 'http://example.com';  <-javascript puro
+        } else {
+            console.log('não quer excluir');
+        }
+    });
+</script>

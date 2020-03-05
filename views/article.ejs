@@ -1,0 +1,24 @@
+<%- include ('partials/header.ejs') %> 
+
+<%- include ('partials/navbar.ejs') %> 
+
+<main role="main">
+    
+    <div class="container container-top">
+
+        <div class="card mt-2">
+            
+            <div class="card-body">
+                <h5 class="card-title mb-1">Artigo: <%= article.title %></h5>                    
+                <span class="badge badge-pill badge-warning"><%= article.category.title %></span>
+                <span class="badge badge-pill badge-secondary float-right">Criada em: <%= article.createdAt.toLocaleDateString() %></span>
+                <hr class="my-2">
+                <p class="card-text"><%- article.body %></p>
+            </div>
+            
+        </div>
+    </div> <!-- /container -->
+
+</main>
+
+<%- include ('partials/footer.ejs') %> 
